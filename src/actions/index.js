@@ -1,0 +1,4 @@
+export {
+    fetchHeroes
+} from "./heroes";
+

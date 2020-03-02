@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+
 import './App.css';
 
 import Header from './components/Header';
@@ -14,11 +15,11 @@ import {Favorites as FavoritesPage} from "./pages/Favorites";
 function App() {
   return (
       <Router>
-        <Header/>
-        <Switch>
-            <Route exact path="/" component={MainPage}/>
-            <Route path="/favorites" component={FavoritesPage}/>
-        </Switch>
+          <Header/>
+          <Switch>
+              <Route exact path="/" component={MainPage}/>
+              <Route path="/favorites" component={FavoritesPage}/>
+          </Switch>
       </Router>
   );
 }
