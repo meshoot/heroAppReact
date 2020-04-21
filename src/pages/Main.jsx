@@ -2,7 +2,7 @@ import React from 'react';
 
 import HeroesList from "../components/HeroesList";
 import Filter from "../components/Filter";
-import Search from "../components/Search";
+import Search from "../components/UI/Search";
 
 export function Main() {
     return (

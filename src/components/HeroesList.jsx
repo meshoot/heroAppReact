@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import HeroCard from "./HeroCard";
+import HeroCard from "./UI/HeroCard";
 
 function HeroesList() {
     const [heroes, setHeroes] = useState([]);
