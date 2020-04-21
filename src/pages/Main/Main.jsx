@@ -1,10 +1,12 @@
 import React from 'react';
 
-import HeroesList from "../components/HeroesList";
-import Filter from "../components/Filter";
-import Search from "../components/UI/Search";
+import HeroesList from "../../components/HeroesList";
+import Filter from "../../components/Filter";
+import Search from "../../components/UI/Search";
 
-export function Main() {
+const Main = props => {
+    const { heroes } = props;
+
     return (
         <main>
             <h1>Главная</h1>
@@ -17,4 +19,7 @@ export function Main() {
             </section>
         </main>
     )
-}
+};
+
+export default Main
+

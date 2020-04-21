@@ -2,18 +2,22 @@ import React, {useState} from 'react';
 
 import HeroCard from "./UI/HeroCard";
 
-function HeroesList() {
-    const [heroes, setHeroes] = useState([]);
+const HeroesList = props => {
+    const { heroes } = props;
 
     return(
         <section>
-            <ul>
-                <li>
-                    <HeroCard/>
-                </li>
-            </ul>
+            { heroes && (
+                <ul>
+                    { heroes.map(hero => (
+                        <li key={hero.id}>
+                            <HeroCard/>
+                        </li>)
+                    )}
+                </ul>
+            ) }
         </section>
     )
-}
+};
 
 export default HeroesList;
