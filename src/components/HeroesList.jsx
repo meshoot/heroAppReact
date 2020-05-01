@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import HeroCard from './UI/HeroCard'
+import Index from './UI/HeroCard/'
 
 const HeroesList = props => {
-  const { heroes: { data }, fetchHeroes } = props
+  const { data, fetchHeroes } = props
 
   useEffect(() => {
     fetchHeroes()
@@ -16,7 +16,7 @@ const HeroesList = props => {
         <ul>
           { data.map(hero => (
             <li key={hero.id}>
-              <HeroCard/>
+              <Index/>
             </li>)
           )}
         </ul>

@@ -11,33 +11,35 @@ export function heroesReducer (state = {
     case FETCH_HEROES: {
       return {
         ...state,
-        heroes: {
-          ...state.heroes,
-          loading: action.loading
-        }
+        loading: action.loading
       }
     }
     case FETCH_HEROES_FAILURE: {
       return {
         ...state,
-        heroes: {
-          ...state.heroes,
-          errors: action.errors,
-          loading: false,
-          lastUpdate: new Date()
-        }
+        errors: action.errors,
+        loading: false,
+        lastUpdate: new Date()
       }
     }
     case FETCH_HEROES_SUCCESS: {
+      const cutId = url => /people\/(.*?)\//.exec(url)[1]
+      const data = {
+        ...action.data,
+        results: action.data.results.map(hero => (
+          {
+            ...hero,
+            id: cutId(hero.url),
+            photo: `https://starwars-visualguide.com/#/characters/${cutId(hero.url)}`
+          }))
+      }
+
       return {
         ...state,
-        heroes: {
-          ...state.heroes,
-          loading: false,
-          lastUpdate: new Date(),
-          needUpdate: false,
-          data: action.heroes
-        }
+        loading: false,
+        lastUpdate: new Date(),
+        needUpdate: false,
+        data
       }
     }
     default: {

@@ -14,11 +14,10 @@ function requestHeroes () {
   }
 }
 
-function requestHeroesSuccess (heroes) {
-  console.log('test')
+function requestHeroesSuccess (data) {
   return {
     type: FETCH_HEROES_SUCCESS,
-    heroes
+    data
   }
 }
 
