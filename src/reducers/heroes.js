@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_HEROES } from "../actions/actionTypes";
+import { FETCH_HEROES } from "../actions/heroes/actionTypes";
 
 export function heroesReducer(state = [], action) {
     switch (action.type) {

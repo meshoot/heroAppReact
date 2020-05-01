@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 
 import Header from "./Header";
-import MainPage from "./../../pages/Main/";
-import FavoritesPage from "./../../pages/Favorites/";
+import MainPage from "./../pages/Main/";
+import FavoritesPage from "./../pages/Favorites";
 
 const Layout = props => {
     return (

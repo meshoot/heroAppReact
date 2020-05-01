@@ -1,8 +1,6 @@
 import React from 'react';
 
-import HeroesList from "../../components/HeroesList";
-import Filter from "../../components/Filter";
-import Search from "../../components/UI/Search";
+import Filter from "../../../components/Filter";
 
 const Main = props => {
     const { heroes } = props;
@@ -14,8 +12,7 @@ const Main = props => {
                 <Filter/>
             </aside>
             <section>
-                <Search/>
-                <HeroesList/>
+
             </section>
         </main>
     )

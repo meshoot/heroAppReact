@@ -1,4 +1,5 @@
-export {
-    fetchHeroes
-} from "./heroes";
+import * as heroes from './heroes'
 
+export default {
+    heroes
+}
