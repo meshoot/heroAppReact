@@ -30,7 +30,7 @@ export function heroesReducer (state = {
           {
             ...hero,
             id: cutId(hero.url),
-            photo: `https://starwars-visualguide.com/#/characters/${cutId(hero.url)}`
+            photo: `https://starwars-visualguide.com/assets/img/characters/${cutId(hero.url)}.jpg`
           }))
       }
 

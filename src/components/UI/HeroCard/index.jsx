@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../Button'
+import PropTypes from 'prop-types'
 
 const HeroCard = ({ photo, name }) => {
   return (
@@ -16,6 +17,11 @@ const HeroCard = ({ photo, name }) => {
       </div>
     </div>
   )
+}
+
+HeroCard.propTypes = {
+  photo: PropTypes.string,
+  name: PropTypes.string
 }
 
 export default HeroCard
