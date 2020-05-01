@@ -1,27 +1,50 @@
 import React from 'react'
-import Button from '../Button'
 import PropTypes from 'prop-types'
 
-const HeroCard = ({ photo, name }) => {
-  return (
-    <div className="hero-card">
-      <div className="hero-card__img">
-        <img src={photo} alt={`Фото ${name}`}/>
-      </div>
-      <h3 className="hero-card__name">{name}</h3>
-      <p className="hero-card__info">
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 
-      </p>
-      <div className="hero-card__control">
-        <Button>Like</Button>
-      </div>
-    </div>
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345
+  },
+  media: {
+    height: 474
+  }
+})
+
+const HeroCard = ({ photo, name, liked }) => {
+  const classes = useStyles()
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={photo} title={name}/>
+      </CardActionArea>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">{ name }</Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton>
+          { liked ? <FavoriteIcon color={'primary'}/> : <FavoriteBorderIcon color={'primary'}/>}
+        </IconButton>
+      </CardActions>
+    </Card>
   )
 }
 
 HeroCard.propTypes = {
   photo: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  liked: PropTypes.bool
 }
 
 export default HeroCard

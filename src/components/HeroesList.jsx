@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import { Grid } from '@material-ui/core'
 import Hero from './UI/HeroCard/'
 
 const HeroesList = props => {
@@ -13,13 +14,13 @@ const HeroesList = props => {
   return (
     <section>
       { data.results && (
-        <ul>
+        <Grid container spacing={3}>
           { data.results.map(hero => (
-            <li key={hero.id}>
+            <Grid xs={4} item key={hero.id}>
               <Hero {...hero}/>
-            </li>)
+            </Grid>)
           )}
-        </ul>
+        </Grid>
       ) }
     </section>
   )
