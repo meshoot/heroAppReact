@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 
-import * as heroesReducer from './heroes';
+import { heroesReducer as heroes } from './heroes'
 
-const reducer = combineReducers(heroesReducer);
+const reducer = combineReducers({
+  heroes
+})
 
-export default reducer;
+export default reducer

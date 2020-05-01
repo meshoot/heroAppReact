@@ -1,23 +1,34 @@
-import React, {useState} from 'react';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-import HeroCard from "./UI/HeroCard";
+import HeroCard from './UI/HeroCard'
 
 const HeroesList = props => {
-    const { heroes } = props;
+  const { heroes: { data }, fetchHeroes } = props
 
-    return(
-        <section>
-            { heroes && (
-                <ul>
-                    { heroes.map(hero => (
-                        <li key={hero.id}>
-                            <HeroCard/>
-                        </li>)
-                    )}
-                </ul>
-            ) }
-        </section>
-    )
-};
+  useEffect(() => {
+    fetchHeroes()
+  }, [])
 
-export default HeroesList;
+  return (
+    <section>
+      { data && (
+        <ul>
+          { data.map(hero => (
+            <li key={hero.id}>
+              <HeroCard/>
+            </li>)
+          )}
+        </ul>
+      ) }
+    </section>
+  )
+}
+
+HeroesList.propTypes = {
+  heroes: PropTypes.object,
+  data: PropTypes.array,
+  fetchHeroes: PropTypes.func
+}
+
+export default HeroesList
