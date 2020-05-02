@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import Page from '../../../components/Page'
 import Filter from '../../../components/Filter'
@@ -6,7 +6,7 @@ import HeroesListContainer from '../../../containers/HeroesListContainer'
 
 const Main = props => {
   return (
-    <Page title={'Главная'}>
+    <Page>
       <main>
         <aside>
           <Filter/>

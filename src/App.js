@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import Layout from "./views/Layout";
+import Layout from './views/Layout'
 
 const App = props => {
   return (
-      <Layout/>
+    <Layout/>
   )
-};
+}
 
-export default App;
+export default App
