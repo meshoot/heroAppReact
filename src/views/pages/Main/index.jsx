@@ -6,9 +6,8 @@ import HeroesListContainer from '../../../containers/HeroesListContainer'
 
 const Main = props => {
   return (
-    <Page>
+    <Page title={'Главная'}>
       <main>
-        <h1>Главная</h1>
         <aside>
           <Filter/>
         </aside>
