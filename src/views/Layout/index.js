@@ -5,18 +5,18 @@ import {
   Route
 } from 'react-router-dom'
 
-import Header from './components/Header'
+import HeaderContainer from '../../containers/HeaderContainer'
 import MainPage from './../pages/Main/'
 import FavoritesPage from './../pages/Favorites'
-import Page from '../../components/Page'
+import PageContainer from '../../containers/PageContainer'
 
 const Layout = props => {
   return (
     <Router>
-      <Header/>
+      <HeaderContainer/>
       <Switch>
-        <Route path="/favorites" component={() => <Page render={FavoritesPage} title="Избранное"/>}/>
-        <Route exact path="/" component={() => <Page render={MainPage} title="Главная"/>}/>
+        <Route path="/favorites" component={() => <PageContainer render={FavoritesPage} title="Избранное"/>}/>
+        <Route exact path="/" component={() => <PageContainer render={MainPage} title="Главная"/>}/>
       </Switch>
     </Router>
   )

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import { Container } from '@material-ui/core'
 
-const Page = ({ title, render }) => {
+const Page = ({ title, render, changeDocumentTitle }) => {
   useEffect(() => {
-    document.title = title || ''
+    changeDocumentTitle(title)
   }, [])
 
   return (
@@ -17,7 +17,8 @@ const Page = ({ title, render }) => {
 
 Page.propTypes = {
   title: PropTypes.string,
-  render: PropTypes.func
+  render: PropTypes.func,
+  changeDocumentTitle: PropTypes.func
 }
 
 export default Page
