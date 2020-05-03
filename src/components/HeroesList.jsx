@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import qs from 'qs'
 
 import { Grid } from '@material-ui/core'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Hero from './UI/HeroCard/'
 import Pagination from './UI/Pagination'
 
 const HeroesList = props => {
-  const { loading, heroes: { data = {} }, fetchHeroes } = props
+  const { heroes: { loading, data = {} }, fetchHeroes } = props
   const { totalPages } = data
   const currentPage = qs.parse(window.location.search, { ignoreQueryPrefix: true }).page || undefined
 
@@ -16,7 +17,17 @@ const HeroesList = props => {
   }, [])
 
   const onChangePageHandler = (event, page) => {
-    fetchHeroes({page})
+    fetchHeroes({ page })
+  }
+
+  if (loading) {
+    return (
+      <Grid container justify={'center'} alignItems={'center'}>
+        <Grid item xs={1} md={1} lg={1}>
+          <CircularProgress/>
+        </Grid>
+      </Grid>
+    )
   }
 
   return (
@@ -33,9 +44,9 @@ const HeroesList = props => {
           <Pagination
             count={ totalPages }
             color={'primary'}
-            disbled={loading}
+            disabled={ loading }
             onChange={onChangePageHandler}
-            defaultPage={ Number(currentPage) }
+            defaultPage={ Number(currentPage) || undefined }
           />
         </Grid>
       ) }
