@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispathToProps = dispatch => {
   return {
-    fetchHeroes: () => dispatch(fetchHeroes())
+    fetchHeroes: params => dispatch(fetchHeroes(params))
   }
 }
 

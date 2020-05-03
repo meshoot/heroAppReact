@@ -26,6 +26,7 @@ export function heroesReducer (state = {
       const cutId = url => /people\/(.*?)\//.exec(url)[1]
       const data = {
         ...action.data,
+        totalPages: Math.ceil(action.data.count / 10),
         results: action.data.results.map(hero => (
           {
             ...hero,
