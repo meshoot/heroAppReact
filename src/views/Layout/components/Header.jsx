@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { fade, makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Header = () => {
+  const [pageName, setPageName] = useState('')
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
@@ -99,6 +100,11 @@ const Header = () => {
     setAnchorEl(null)
     handleMobileMenuClose()
   }
+
+  useEffect(() => {
+    const title = document.head.title
+    setPageName(title)
+  }, [])
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -170,7 +176,7 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            {document.title}
+            { pageName }
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

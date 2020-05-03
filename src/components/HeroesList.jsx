@@ -16,7 +16,7 @@ const HeroesList = props => {
       { data.results && (
         <Grid container spacing={3}>
           { data.results.map(hero => (
-            <Grid xs={4} item key={hero.id}>
+            <Grid xs={3} item key={hero.id}>
               <Hero {...hero}/>
             </Grid>)
           )}

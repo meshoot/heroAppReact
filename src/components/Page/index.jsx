@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import Typography from '@material-ui/core/Typography'
 import { Container } from '@material-ui/core'
 
-const Page = ({ title, children }) => {
+const Page = ({ title, render }) => {
+  useEffect(() => {
+    document.title = title || ''
+  }, [])
+
   return (
     <Container>
-      { title && <Typography variant={'h2'}>{ title }</Typography> }
-      { children }
+      { render && render() }
     </Container>
   )
 }
 
 Page.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.any
+  render: PropTypes.func
 }
 
 export default Page
