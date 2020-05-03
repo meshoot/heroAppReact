@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Page from '../../../components/Page'
 import Filter from '../../../components/Filter'
 import HeroesListContainer from '../../../containers/HeroesListContainer'
 

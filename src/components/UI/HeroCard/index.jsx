@@ -14,10 +14,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    maxWidth: 314
   },
   media: {
-    height: 474
+    height: 431
   }
 })
 
@@ -30,7 +30,7 @@ const HeroCard = ({ photo, name, liked }) => {
         <CardMedia className={classes.media} image={photo} title={name}/>
       </CardActionArea>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">{ name }</Typography>
+        <Typography gutterBottom variant="h5" component="h5">{ name }</Typography>
       </CardContent>
       <CardActions>
         <IconButton>
