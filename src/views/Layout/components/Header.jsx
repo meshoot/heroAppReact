@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 
 import { fade, makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -100,6 +101,12 @@ const Header = props => {
     handleMobileMenuClose()
   }
 
+  const searchHandler = _.debounce(search => {
+    const { fetchHeroes } = props
+
+    fetchHeroes({ search })
+  }, 800)
+
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
     <Menu
@@ -183,6 +190,7 @@ const Header = props => {
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={event => searchHandler(event.target.value)}
             />
           </div>
         </Toolbar>

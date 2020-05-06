@@ -43,7 +43,7 @@ const HeroesList = props => {
         <Grid container justify={'center'}>
           <Grid container spacing={3}>
             { data.results.map(hero => (
-              <Grid xs={2} md={2} lg={3} item key={hero.id}>
+              <Grid xs={6} md={4} lg={3} item key={hero.id}>
                 <Hero {...hero}/>
               </Grid>)
             )}
