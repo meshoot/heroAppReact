@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 import qs from 'qs'
 
 import { Grid } from '@material-ui/core'
@@ -10,7 +11,8 @@ import Pagination from './UI/Pagination'
 const HeroesList = props => {
   const { heroes: { loading, data = {} }, fetchHeroes } = props
   const { totalPages } = data
-  const currentPage = qs.parse(window.location.search, { ignoreQueryPrefix: true }).page || undefined
+  const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true })
+  const currentPage = query.page || undefined
 
   useEffect(() => {
     fetchHeroes()

@@ -30,21 +30,10 @@ function requestHeroesFail (error) {
 }
 
 export function fetchHeroes (params) {
-  if (params) {
-    const query = {
-      ...qs.parse(window.location.search, { ignoreQueryPrefix: true }),
-      ...params
-    }
-
-    window.location.search = qs.stringify(query)
-  }
-
   return dispatch => {
     dispatch(requestHeroes())
-    const query = qs.parse(window.location.search, { ignoreQueryPrefix: true })
-    const { page, search } = query
 
-    axios(`${API_URL}people`, { params: { page, search } }).then(
+    axios(`${API_URL}people`, { params }).then(
       resolve => dispatch(requestHeroesSuccess(resolve.data)),
       error => {
         console.log(error)

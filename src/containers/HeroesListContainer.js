@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { fetchHeroes } from '../actions/heroes'
 import HeroesList from '../components/HeroesList'
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ heroes, ...props }) => {
   return {
-    heroes: state.heroes
+    heroes,
+    props
   }
 }
 
@@ -15,4 +17,4 @@ const mapDispathToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispathToProps)(HeroesList)
+export default withRouter(connect(mapStateToProps, mapDispathToProps)(HeroesList))
