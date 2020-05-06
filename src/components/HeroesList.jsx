@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import qs from 'qs'
 
 import { Grid } from '@material-ui/core'
@@ -13,12 +13,17 @@ const HeroesList = props => {
   const { totalPages } = data
   const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true })
   const currentPage = query.page || undefined
+  const history = useHistory()
 
   useEffect(() => {
     fetchHeroes()
   }, [])
 
   const onChangePageHandler = (event, page) => {
+    history.push({
+      search: qs.stringify({ ...query, page })
+    })
+
     fetchHeroes({ page })
   }
 
