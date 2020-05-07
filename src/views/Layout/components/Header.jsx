@@ -1,5 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
+import qs from 'qs'
+import { useLocation, useHistory } from 'react-router-dom'
 
 import { fade, makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -88,6 +90,10 @@ const Header = props => {
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
+  const history = useHistory()
+  const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true })
+  console.log(query)
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -104,7 +110,9 @@ const Header = props => {
   const searchHandler = _.debounce(search => {
     const { fetchHeroes } = props
 
-    fetchHeroes({ search })
+    history.push({ search: search ? `search=${search}` : '' })
+
+    fetchHeroes({ ...query, search })
   }, 800)
 
   const menuId = 'primary-search-account-menu'
@@ -190,6 +198,7 @@ const Header = props => {
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              defaultValue={ query.search }
               onChange={event => searchHandler(event.target.value)}
             />
           </div>

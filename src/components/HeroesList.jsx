@@ -16,7 +16,7 @@ const HeroesList = props => {
   const history = useHistory()
 
   useEffect(() => {
-    fetchHeroes()
+    fetchHeroes(query)
   }, [])
 
   const onChangePageHandler = (event, page) => {
