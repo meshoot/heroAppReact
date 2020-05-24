@@ -3,7 +3,9 @@ import axios from 'axios'
 import {
   FETCH_HEROES,
   FETCH_HEROES_FAILURE,
-  FETCH_HEROES_SUCCESS
+  FETCH_HEROES_SUCCESS,
+  ADD_HERO_TO_FAVORITE,
+  REMOVE_HERO_FROM_FAVORITE,
 } from './actionTypes'
 import { API_URL } from './../../constants/'
 
@@ -39,5 +41,19 @@ export function fetchHeroes (params) {
         return dispatch(requestHeroesFail(error))
       }
     )
+  }
+}
+
+export function addHeroToFavorite (hero) {
+  return {
+    type: ADD_HERO_TO_FAVORITE,
+    hero
+  }
+}
+
+export function removeHeroFromFavorite (hero) {
+  return {
+    type: REMOVE_HERO_FROM_FAVORITE,
+    hero
   }
 }

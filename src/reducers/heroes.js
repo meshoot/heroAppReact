@@ -1,7 +1,9 @@
 import {
   FETCH_HEROES,
   FETCH_HEROES_FAILURE,
-  FETCH_HEROES_SUCCESS
+  FETCH_HEROES_SUCCESS,
+  ADD_HERO_TO_FAVORITE,
+  REMOVE_HERO_FROM_FAVORITE
 } from '../actions/heroes/actionTypes'
 
 export function heroesReducer (state = {
@@ -42,6 +44,18 @@ export function heroesReducer (state = {
         needUpdate: false,
         data
       }
+    }
+    case ADD_HERO_TO_FAVORITE: {
+      const { hero } = action
+      const data = state.data.results.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: true } : heroItem)
+
+      return [...state, data]
+    }
+    case REMOVE_HERO_FROM_FAVORITE: {
+      const { hero } = action
+      const data = state.data.results.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: false } : heroItem)
+
+      return { ...state, data }
     }
     default: {
       return state

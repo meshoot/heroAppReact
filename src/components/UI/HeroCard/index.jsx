@@ -21,8 +21,12 @@ const useStyles = makeStyles({
   }
 })
 
-const HeroCard = ({ photo, name, liked }) => {
+const HeroCard = ({ hero, onAddToFavorite, onRemoveFromFavorite }) => {
+  const { photo, name, liked } = hero
   const classes = useStyles()
+
+  const addToFavoriteHandlder = () => onAddToFavorite(hero)
+  const removeFromFavoriteHandlder = () => onRemoveFromFavorite(hero)
 
   return (
     <Card className={classes.root}>
@@ -33,7 +37,7 @@ const HeroCard = ({ photo, name, liked }) => {
         <Typography gutterBottom variant="h5" component="h5">{ name }</Typography>
       </CardContent>
       <CardActions>
-        <IconButton>
+        <IconButton onClick={ !liked ? addToFavoriteHandlder : removeFromFavoriteHandlder }>
           { liked ? <FavoriteIcon color={'primary'}/> : <FavoriteBorderIcon color={'primary'}/>}
         </IconButton>
       </CardActions>
@@ -42,9 +46,13 @@ const HeroCard = ({ photo, name, liked }) => {
 }
 
 HeroCard.propTypes = {
-  photo: PropTypes.string,
-  name: PropTypes.string,
-  liked: PropTypes.bool
+  hero: PropTypes.shape({
+    photo: PropTypes.string,
+    name: PropTypes.string,
+    liked: PropTypes.bool
+  }).isRequired,
+  onAddToFavorite: PropTypes.func.isRequired,
+  onRemoveFromFavorite: PropTypes.func.isRequired
 }
 
 export default HeroCard
