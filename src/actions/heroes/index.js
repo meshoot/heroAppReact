@@ -5,8 +5,8 @@ import {
   FETCH_HEROES_FAILURE,
   FETCH_HEROES_SUCCESS,
   ADD_HERO_TO_FAVORITE,
-  REMOVE_HERO_FROM_FAVORITE,
-} from './actionTypes'
+  REMOVE_HERO_FROM_FAVORITE
+} from '../actionTypes'
 import { API_URL } from './../../constants/'
 
 function requestHeroes () {

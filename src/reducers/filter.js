@@ -1,4 +1,4 @@
-import { SET_FILTER } from '../actions/filter/actionTypes'
+import { SET_FILTER } from '../actions/actionTypes'
 
 export function filterReduces (state = {}, action) {
   switch (action.type) {

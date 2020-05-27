@@ -4,7 +4,7 @@ import {
   FETCH_HEROES_SUCCESS,
   ADD_HERO_TO_FAVORITE,
   REMOVE_HERO_FROM_FAVORITE
-} from '../actions/heroes/actionTypes'
+} from '../actions/actionTypes'
 
 export function heroesReducer (state = {
   loading: false, errors: [], lastUpdate: null, data: []

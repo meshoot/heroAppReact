@@ -1,4 +1,4 @@
-import { ROUTING_PAGE } from '../actions/routing/actionTypes'
+import { ROUTING_PAGE } from '../actions/actionTypes'
 
 export function routingReducer (state = { title: '' }, action) {
   switch (action.type) {

@@ -1,4 +1,4 @@
-import { ROUTING_PAGE } from './actionTypes'
+import { ROUTING_PAGE } from '../actionTypes'
 
 export function RoutingPage ({ title }) {
   return {

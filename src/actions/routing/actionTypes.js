@@ -1,1 +1,0 @@
-export const ROUTING_PAGE = 'ROUTING_PAGE'

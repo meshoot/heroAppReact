@@ -1,4 +1,4 @@
-import { CHANGE_PAGE_TITLE } from './ActionTypes'
+import { CHANGE_PAGE_TITLE } from '../actionTypes'
 
 export function changePageTitle (title) {
   return {

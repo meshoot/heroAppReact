@@ -1,4 +1,4 @@
-import { CHANGE_PAGE_TITLE } from './../actions/page/ActionTypes'
+import { CHANGE_PAGE_TITLE } from './../actions/actionTypes'
 
 export function pageReducer (state = { title: '' }, action) {
   switch (action.type) {
