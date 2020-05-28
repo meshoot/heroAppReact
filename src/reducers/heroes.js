@@ -7,7 +7,7 @@ import {
 } from '../actions/actionTypes'
 
 export function heroesReducer (state = {
-  loading: false, errors: [], lastUpdate: null, data: []
+  loading: false, errors: [], lastUpdate: null, data: [], count: '', next: '', previous: '', totalPages: ''
 }, action) {
   switch (action.type) {
     case FETCH_HEROES: {
@@ -26,23 +26,22 @@ export function heroesReducer (state = {
     }
     case FETCH_HEROES_SUCCESS: {
       const cutId = url => /people\/(.*?)\//.exec(url)[1]
-      const data = {
-        ...action.data,
-        totalPages: Math.ceil(action.data.count / 10),
-        results: action.data.results.map(hero => (
-          {
-            ...hero,
-            id: cutId(hero.url),
-            photo: `https://starwars-visualguide.com/assets/img/characters/${cutId(hero.url)}.jpg`
-          }))
-      }
+      const { count, next, previous, results } = action.data
 
       return {
         ...state,
         loading: false,
         lastUpdate: new Date(),
         needUpdate: false,
-        data
+        previous,
+        next,
+        totalPages: Math.ceil(count / 10),
+        data: results.map(hero => (
+          {
+            ...hero,
+            id: cutId(hero.url),
+            photo: `https://starwars-visualguide.com/assets/img/characters/${cutId(hero.url)}.jpg`
+          }))
       }
     }
     case ADD_HERO_TO_FAVORITE: {

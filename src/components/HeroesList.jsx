@@ -9,8 +9,7 @@ import Hero from './UI/HeroCard/'
 import Pagination from './UI/Pagination'
 
 const HeroesList = props => {
-  const { heroes: { loading, data = {} }, fetchHeroes, addHeroToFavorite, removeHeroFromFavorite } = props
-  const { totalPages } = data
+  const { heroes: { loading, data = {}, totalPages }, fetchHeroes, addHeroToFavorite, removeHeroFromFavorite } = props
   const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true })
   const currentPage = query.page || undefined
   const history = useHistory()
@@ -39,10 +38,10 @@ const HeroesList = props => {
 
   return (
     <section>
-      { data.results && (
+      { data && (
         <Grid container justify={'center'}>
           <Grid container spacing={3}>
-            { data.results.map(hero => (
+            { data.map(hero => (
               <Grid xs={6} md={4} lg={3} item key={hero.id}>
                 <Hero hero={hero} onAddToFavorite={addHeroToFavorite} onRemoveFromFavorite={removeHeroFromFavorite}/>
               </Grid>)
@@ -66,7 +65,8 @@ HeroesList.propTypes = {
   data: PropTypes.array,
   fetchHeroes: PropTypes.func,
   addHeroToFavorite: PropTypes.func,
-  removeHeroFromFavorite: PropTypes.func
+  removeHeroFromFavorite: PropTypes.func,
+  totalPages: PropTypes.number
 }
 
 export default HeroesList
