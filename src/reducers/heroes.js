@@ -7,7 +7,7 @@ import {
 } from '../actions/actionTypes'
 
 export function heroesReducer (state = {
-  loading: false, errors: [], lastUpdate: null, data: [], count: '', next: '', previous: '', totalPages: ''
+  loading: false, errors: [], lastUpdate: null, data: [], favorites: [], count: '', next: '', previous: '', totalPages: ''
 }, action) {
   switch (action.type) {
     case FETCH_HEROES: {
@@ -46,15 +46,17 @@ export function heroesReducer (state = {
     }
     case ADD_HERO_TO_FAVORITE: {
       const { hero } = action
-      const data = state.data.results.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: true } : heroItem)
+      const data = state.data.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: true } : heroItem)
+      const favorites = [...state.favorites, { ...hero, liked: true }]
 
-      return [...state, data]
+      return { ...state, data, favorites }
     }
     case REMOVE_HERO_FROM_FAVORITE: {
       const { hero } = action
-      const data = state.data.results.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: false } : heroItem)
+      const data = state.data.map(heroItem => heroItem.id === hero.id ? { ...heroItem, liked: false } : heroItem)
+      const favorites = state.favorites.filter(heroItem => heroItem.id !== hero.id)
 
-      return { ...state, data }
+      return { ...state, data, favorites }
     }
     default: {
       return state
