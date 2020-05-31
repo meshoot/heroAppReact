@@ -7,7 +7,7 @@ import HeroesList from '../components/HeroesList'
 const mapStateToProps = ({ heroes, ...props }) => {
   return {
     heroes,
-    props
+    ...props
   }
 }
 

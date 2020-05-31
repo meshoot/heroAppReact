@@ -10,7 +10,7 @@ const Main = props => {
         <Filter/>
       </aside>
       <section>
-        <HeroesListContainer/>
+        <HeroesListContainer type="all"/>
       </section>
     </main>
   )
