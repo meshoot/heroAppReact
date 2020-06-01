@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Tabs from '../../../components/UI/Tabs'
 import Filter from '../../../components/Filter'
 import HeroesListContainer from '../../../containers/HeroesListContainer'
 
-const Main = props => {
-  const [activeTab, setActiveTab] = useState('')
+const Main = () => {
   const HeroListTabsList = [
-    { id: 'tab-all', 'aria-controls': 'tab-panel-all', label: 'Все' },
-    { id: 'tab-favorites', 'aria-controls': 'tab-panel-favorites', label: 'Любимые' }
+    { value: 'tab-all', label: 'Все' },
+    { value: 'tab-favorites', label: 'Любимые' }
   ]
 
   return (
     <main>
-      <aside>
-        <Filter/>
-      </aside>
       <section>
-        <Tabs value={activeTab} tabs={HeroListTabsList} />
+        <Tabs tabs={HeroListTabsList} />
+        <aside>
+          <Filter/>
+        </aside>
         <HeroesListContainer type="all"/>
       </section>
     </main>

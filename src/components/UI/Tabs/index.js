@@ -1,38 +1,33 @@
-import React from 'react'
-import MaterialTabs from '@material-ui/core/Tabs'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-import Tab from '@material-ui/core/Tab'
-import AppBar from '@material-ui/core/AppBar'
+import { Tab, AppBar, Tabs as MaterialTabs } from '@material-ui/core'
+import { TabList, TabPanel, TabContext } from '@material-ui/lab'
 
-const TabPanel = props => {
-  const { children, value, index, ...other } = props
+const Tabs = ({ initialValue, tabs, ...props }) => {
+  const [value, setValue] = useState(initialValue || tabs[0].value)
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <div>
-
-        </div>
-      )}
-    </div>
+    <MaterialTabs>
+      <TabContext value={value}>
+        <AppBar position="static">
+          <TabList onChange={handleChange} {...props}>
+            { tabs && tabs.map(tabItem => <Tab label={tabItem.label} value={tabItem.value} key={tabItem.value}/>) }
+          </TabList>
+        </AppBar>
+        { tabs && tabs.map(tabItem => <TabPanel value={tabItem.value} key={tabItem.value}/>) }
+      </TabContext>
+    </MaterialTabs>
   )
 }
 
-const Tabs = ({ tabs }) => {
-  return (
-    <MaterialTabs>
-      <AppBar>
-        { tabs && tabs.map(tabItem => <Tab label={tabItem.label}/>) }
-      </AppBar>
-      { tabs && tabs.map(tabItem => <TabPanel/>) }
-    </MaterialTabs>
-  )
+Tabs.propTypes = {
+  initialValue: PropTypes.string,
+  tabs: PropTypes.array
 }
 
 export default Tabs
