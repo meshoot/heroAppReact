@@ -9,7 +9,7 @@ import Hero from './UI/HeroCard/'
 import Pagination from './UI/Pagination'
 
 const HeroesList = props => {
-  const { heroes: { loading = false, data = [], favorites = [], totalPages }, fetchHeroes, addHeroToFavorite, removeHeroFromFavorite, type = 'all' } = props
+  const { heroes: { loading = false, data = [], totalPages }, fetchHeroes, addHeroToFavorite, removeHeroFromFavorite } = props
   const query = qs.parse(useLocation().search, { ignoreQueryPrefix: true })
   const currentPage = query.page || undefined
   const history = useHistory()
@@ -38,20 +38,15 @@ const HeroesList = props => {
 
   return (
     <section>
-      <Grid container justify={'center'}>
+      <Grid container justify="center">
         <Grid container spacing={3}>
-          { type === 'all' && data && data.map(hero => (
-            <Grid xs={6} md={4} lg={3} item key={hero.id}>
-              <Hero hero={hero} onAddToFavorite={addHeroToFavorite} onRemoveFromFavorite={removeHeroFromFavorite}/>
-            </Grid>)
-          )}
-          { type === 'favorites' && favorites && favorites.map(hero => (
-            <Grid xs={6} md={4} lg={3} item key={hero.id}>
+          { data && data.map(hero => (
+            <Grid xs="6" md={4} lg={3} item key={hero.id}>
               <Hero hero={hero} onAddToFavorite={addHeroToFavorite} onRemoveFromFavorite={removeHeroFromFavorite}/>
             </Grid>)
           )}
         </Grid>
-        {type === 'all' && <Pagination
+        {data.length > 0 && <Pagination
           count={ totalPages }
           color={'primary'}
           disabled={ loading }
