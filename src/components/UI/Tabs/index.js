@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import MaterialTabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+
+import { makeStyles } from '@material-ui/core/styles'
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props
@@ -33,7 +34,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired
 }
 
-function LinkTab (props) {
+const LinkTab = props => {
   return (
     <Tab
       component="a"
@@ -73,7 +74,7 @@ const NavTabs = props => {
           { tabs && tabs.map((tab, index) =>
             <LinkTab
               key={tab.id}
-              ariaControls={`nav-tabpanel-${index}`}
+              aria-controls={`nav-tabpanel-${index}`}
               label={tab.id}
               href="/drafts"
             />) }
@@ -86,6 +87,10 @@ const NavTabs = props => {
       ) }
     </div>
   )
+}
+
+NavTabs.propTypes = {
+  tabs: PropTypes.array.isRequired
 }
 
 export default NavTabs
